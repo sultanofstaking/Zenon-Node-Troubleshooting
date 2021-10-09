@@ -1,6 +1,6 @@
 # Zenon-Testnet Node Tips
 
-# I created this guide to help Zenon testnet users diagnose and fix errors in their nodes. The tips below are my own and not endorsed by the Zenon team. Try at your own risk. If you found helpful no need to donate, but delegation to SultanOfStaking pillar would be appreciated https://explorer.znn.space/pillar/z1qpgdtn89u9365jr7ltdxu29fy52pnzwe4fl7zc
+# I created this guide to help Zenon testnet users diagnose and fix errors in their nodes. The tips below are my own and not endorsed by the Zenon team. Try at your own risk.
 
 # How to diagnose errors in your node:
 #Open two terminal windows logged into your node. In the first window run 
@@ -40,3 +40,5 @@ sudo tail -f /var/log/syslog
 
 #I am getting Config malformed:
 #You can stop the service, disableRPC, then enableRPC. When you enableRPC you should get a readout telling you the line and character in your config.json that is throwing the error. Once you have that edit the config file and fix the error. The error is fixed when you can disableRPC and get "successful" return, then enableRPC and get "successful" return.
+
+# If you found helpful no need to donate, but delegation to SultanOfStaking pillar would be appreciated https://explorer.znn.space/pillar/z1qpgdtn89u9365jr7ltdxu29fy52pnzwe4fl7zc
