@@ -27,6 +27,8 @@ A note to start, if you set up a new user for security be aware that znnd will u
 
 - **znnd is not detecting my wallet**: Ensure yourn wallet is in the correct path "/root/.znn/wallet". In this example running `cd wallet` from "/root/.znn" should show your producer address and syrius address.
 
+- **Unavailable resources (no disk space)**: Likely in logs but to chase down what is taking up the space run `du -cha --max-depth=1 / | grep -E "M|G"` This will tell you what directory is taking up the space. From there you can drill down until you find the culprit. For example, if "root" is using all your memory run `du -cha --max-depth=1 /root | grep -E "M|G"` then if .zenon is the suspect `du -cha --max-depth=1 /root/.zenon | grep -E "M|G"` and so on. 
+
 ## Other commands worth knowing
 ### How to edit config.json
 
