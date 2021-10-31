@@ -1,6 +1,6 @@
 # Zenon-Testnet Node Tips
 
-## I created this guide to help Zenon testnet users diagnose and fix errors in their nodes. The tips below are my own and not endorsed by the Zenon team. Try at your own risk.
+## I created this guide to help Zenon testnet users diagnose and fix errors in their nodes. The tips below are my own and not endorsed by the Zenon team. Please use the issue feature for fixes here. If you need to reach me 1:1 DM me on TG @SultanOfStaking - Try at your own risk.
 
 ## How to diagnose errors in your node:
 
