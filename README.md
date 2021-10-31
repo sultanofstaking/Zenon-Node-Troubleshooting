@@ -30,6 +30,9 @@ A note to start, if you set up a new user for security be aware that znnd will u
 - **Unavailable resources (no disk space)**: Likely in logs but to chase down what is taking up the space run `du -cha --max-depth=1 / | grep -E "M|G"` This will tell you what directory is taking up the space. From there you can drill down until you find the culprit. For example, if "root" is using all your memory run `du -cha --max-depth=1 /root | grep -E "M|G"` then if .zenon is the suspect `du -cha --max-depth=1 /root/.zenon | grep -E "M|G"` and so on. 
 
 ## Other commands worth knowing
+
+### All Zenon CLI commands can be found here https://testnet.znn.space/#!cli.md
+
 ### How to edit config.json
 
 `nano ~/.znn/config.json`
@@ -53,5 +56,28 @@ systemctl status znnd.service
 or
 
 `sudo tail -f /var/log/syslog`
+
+### How to move files
+
+`sudo mv yourfile ./yourpath/yourpath/yourfile` 
+
+This is helpful if you get errors indicating zenon cannot find data, wallet, etc. When you start your node logs should show you the paths being used for data and config. If your files on your machine are not in that path you need to move them. For example, if config path on startup is (making this up) root/znnd/config and your path is user1/znnd/config you would need to navigate to user1/znnd and run “sudo mv config ./root/znnd/config"
+
+### Some Basic Linux Commands: https://linuxcommand.org/lc3_man_pages/ssh1.html 
+    * Escape (END) = press q to get back to cli
+    * Save = CTRL+O
+    * Exit = CTRL+X
+    * Remove = rm 
+    * Remove files in directory = rm -r
+    * Remove directory = rm -rf 
+    * Terminate program = ctrl+c
+    * View free memory = free -m
+    * View memory usage = ps aux
+    * View logs = 
+        * cd /var/log 
+        * ls
+        * sudo nano /var/log/log you want to view
+        * sudo tail -f /var/log/syslog
+    * Exit log = ctrl+c
 
 ## If you found helpful no need to donate, but delegation to SultanOfStaking pillar would be appreciated https://explorer.znn.space/pillar/z1qpgdtn89u9365jr7ltdxu29fy52pnzwe4fl7zc
