@@ -6,20 +6,24 @@
 
 A good first step when diagnosing your node is to pull logs. To do this open a terminal window logged into your node and run the following command 
 
-`sudo journalctl -f -u znnd.service`
+`sudo tail -f /var/log/syslog`
 
 You will either see logs of block production with no errors (that's good), block production with errors (these may be nothing or may need to be fixed - when in doubt ask the community), or your node may not be running. Assuming simply looking at the logs didn't give you enough info you can stop and start your node and watch the start up process for errors. To do this open another terminal window, log into your node, and run
 
-`sudo systemctl stop znnd.service`
+`./znn-controller`
 
 Then 
 
-`sudo systemctl start znnd.service`
+`4` to stop your service
+
+Then
+
+`3` to start the service 
 
 The first window you opened should now show logs of the startup process then block production. If you get errors in the startup process you need to fix them. I have compiled a list of common errors below. Please submit an issue or message me if you encounter an error I need to add to the list.
 
 ## Common errors:
-A note to start, if you set up a new user for security be aware that znnd will use the "root" path so you may need to move files from your new user to root or change base path in the service file.
+A note to start, if you set up a new user for security purposes be aware that znnd will use the "root" path so you may need to move files from your new user to root or change base path in the service file. An easier way is to install the node from root from the start.
 
 - **Config file missing:** Ensure config is in correct path "/root/.znn/config.json". The contents of this file should mirror those on the [Zenon pillar deployment page](https://testnet.znn.space/#!deploy.md)
 
@@ -37,23 +41,7 @@ A note to start, if you set up a new user for security be aware that znnd will u
 
 `nano ~/.znn/config.json`
 
-### How to edit znnd.service (note you will need to reload the daemon for changes to go into effect)
-
-`sudo nano /etc/systemd/system/znnd.service`
-
-### Common znnd.service commands:
-`````
-sudo systemctl stop znnd.service
-sudo systemctl daemon-reload
-sudo systemctl start znnd.service
-sudo systemctl restart znnd.service
-systemctl status znnd.service
-`````
 ### How to pull logs:
-
-`sudo journalctl -f -u znnd.service`
-
-or
 
 `sudo tail -f /var/log/syslog`
 
