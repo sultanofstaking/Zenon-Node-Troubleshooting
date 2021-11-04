@@ -8,6 +8,10 @@ A good first step when diagnosing your node is to pull logs. To do this open a t
 
 `sudo tail -f /var/log/syslog`
 
+OR
+
+`sudo journalctl -f -u go-zenon`
+
 You will either see logs of block production with no errors (that's good), block production with errors (these may be nothing or may need to be fixed - when in doubt ask the community), or your node may not be running. Assuming simply looking at the logs didn't give you enough info you can stop and start your node and watch the start up process for errors. To do this open another terminal window, log into your node, and run
 
 `./znn-controller`
@@ -22,10 +26,10 @@ Then
 
 The first window you opened should now show logs of the startup process then block production. If you get errors in the startup process you need to fix them. I have compiled a list of common errors below. Please submit an issue or message me if you encounter an error I need to add to the list.
 
-To stop the logs at any time press control+c
+### To stop the logs at any time press control+c
 
 ## Common errors:
-A note to start, if you set up a new user for security purposes be aware that znnd will use the "root" path so you may need to move files from your new user to root or change base path in the service file. An easier way is to install the node from root from the start.
+A note to start, if you set up a new user for security purposes and downloaded the bundle there be aware that znnd will use the "root" path so you may need to move files from your new user to root or change base path in the service file. An easier way is to install the node from root from the start.
 
 - **Config file missing:** Ensure config is in correct path "/root/.znn/config.json". The contents of this file should mirror those on the [Zenon pillar deployment page](https://testnet.znn.space/#!deploy.md)
 
