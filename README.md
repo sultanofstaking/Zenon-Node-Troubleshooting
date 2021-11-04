@@ -22,6 +22,8 @@ Then
 
 The first window you opened should now show logs of the startup process then block production. If you get errors in the startup process you need to fix them. I have compiled a list of common errors below. Please submit an issue or message me if you encounter an error I need to add to the list.
 
+To stop the logs at any time press control+c
+
 ## Common errors:
 A note to start, if you set up a new user for security purposes be aware that znnd will use the "root" path so you may need to move files from your new user to root or change base path in the service file. An easier way is to install the node from root from the start.
 
