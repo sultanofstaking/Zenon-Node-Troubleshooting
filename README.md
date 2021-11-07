@@ -58,8 +58,8 @@ A note to start, if you set up a new user for security purposes and downloaded t
 ```
 sudo systemctl stop go-zenon
 sudo systemctl daemon-reload
-sudo systemctl start stop go-zenon
-sudo systemctl restart stop go-zenon
+sudo systemctl start go-zenon
+sudo systemctl restart go-zenon
 systemctl status go-zenon
 ```
 
