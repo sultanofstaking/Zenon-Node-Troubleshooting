@@ -60,7 +60,7 @@ sudo systemctl stop go-zenon
 sudo systemctl daemon-reload
 sudo systemctl start stop go-zenon
 sudo systemctl restart stop go-zenon
-systemctl status stop go-zenon
+systemctl status go-zenon
 ```
 
 ### How to move files
