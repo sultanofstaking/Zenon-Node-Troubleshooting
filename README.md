@@ -31,7 +31,7 @@ The first window you opened should now show logs of the startup process then blo
 ## Common errors:
 A note to start, if you set up a new user for security purposes and downloaded the bundle there be aware that znnd will use the "root" path so you may need to move files from your new user to root or change base path in the service file. An easier way is to install the node from root from the start.
 
-- **My wallet is not detected**: Ensure yourn wallet is in the correct path "/root/.znn/wallet". In this example running `cd wallet` from "/root/.znn" should show your producer address and syrius address. If not, check that same path in the user you created and downloaded the bundle with then move the wallet (move steps are further down). 
+- **My wallet is not detected**: Ensure yourn wallet is in the correct path "/root/.znn/wallet". In this example running `cd wallet` from "/root/.znn" should show your producer address. If not, check that same path in the user you created and downloaded the bundle with then move the wallet (move steps are further down). 
 
 - **Config file missing:** Ensure config is in correct path "/root/.znn/config.json". The contents of this file should mirror those on the [Zenon pillar deployment page](https://testnet.znn.space/#!deploy.md)
 
@@ -69,20 +69,26 @@ systemctl status go-zenon
 
 This is helpful if you get errors indicating zenon cannot find data, wallet, etc. When you start your node logs should show you the paths being used for data and config. If your files on your machine are not in that path you need to move them. For example, if config path on startup is (making this up) root/znnd/config and your path is user1/znnd/config you would need to navigate to user1/znnd and run “sudo mv config ./root/znnd/config"
 
-### Some Basic Linux Commands: https://linuxcommand.org/lc3_man_pages/ssh1.html 
-    * Escape (END) = press q to get back to cli (needed after checking service status)
-    * Save = CTRL+O (needed when editing files)
-    * Exit = CTRL+X (needed when editing files)
-    * Remove = rm 
-    * Remove files in directory = rm -r
-    * Remove directory = rm -rf 
-    * View free memory = free -m
-    * View memory usage = ps aux
-    * View logs = 
-        * cd /var/log 
-        * ls
-        * sudo nano /var/log/log you want to view
-        * sudo tail -f /var/log/syslog
-    * Exit log = ctrl+c
+### Basic Linux Commands: https://linuxcommand.org/lc3_man_pages/ssh1.html 
+Escape (END) = press q to get back to cli
+- Save = CTRL+O
+- Exit = CTRL+X
+- Remove = `rm`
+- Remove files in directory = `rm -r`
+- Remove directory = `rm -rf`
+- Terminate program = `ctrl+c`
+- View free memory = `free -m`
+- View memory usage = `ps aux`
+- View logs = 
+`cd /var/log`
+`ls`
+`sudo nano /var/log/log` replace log with what you want to view
+- Exit log = ctrl+c
+
+### System utilities to view performance
+- Memory usage with `vmstat` `top` `free` `htop`
+- CPU/memory/disk with `sar`
+- Bandwidth with `iftop`
+- Network protocols with `ntopng`
 
 ## If you found helpful no need to donate, but delegation to SultanOfStaking pillar would be appreciated https://explorer.znn.space/pillar/z1qpgdtn89u9365jr7ltdxu29fy52pnzwe4fl7zc
