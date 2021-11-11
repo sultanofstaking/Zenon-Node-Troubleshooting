@@ -31,7 +31,7 @@ The first window you opened should now show logs of the startup process then blo
 ## Common errors:
 A note to start, if you set up a new user for security purposes and downloaded the bundle there be aware that znnd will use the "root" path so you may need to move files from your new user to root or change base path in the service file. An easier way is to install the node from root from the start.
 
-- **My wallet is not detected**: Ensure yourn wallet is in the correct path "/root/.znn/wallet". In this example running `cd wallet` from "/root/.znn" should show your producer address. If not, check that same path in the user you created and downloaded the bundle with then move the wallet (move steps are further down). 
+- **My wallet is not detected**: Ensure yourn wallet is in the correct path "/root/.znn/wallet". In this example running `ls - lha` from "/root/.znn/wallet" should show your producer address. If not, check that same path in the user you created and downloaded the bundle with then move the wallet (move steps are further down). 
 
 - **Config file missing:** Ensure config is in correct path "/root/.znn/config.json". The contents of this file should mirror those on the [Zenon pillar deployment page](https://testnet.znn.space/#!deploy.md)
 
@@ -56,11 +56,11 @@ A note to start, if you set up a new user for security purposes and downloaded t
 ### go-zenon service commands
 
 ```
-sudo systemctl stop go-zenon
+sudo systemctl stop go-zenon.service
 sudo systemctl daemon-reload
-sudo systemctl start go-zenon
-sudo systemctl restart go-zenon
-systemctl status go-zenon
+sudo systemctl start go-zenon.service
+sudo systemctl restart go-zenon.service
+systemctl status go-zenon.service
 ```
 
 ### How to move files
