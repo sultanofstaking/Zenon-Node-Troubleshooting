@@ -51,7 +51,7 @@ A note to start, if you set up a new user for security purposes and downloaded t
 
 ### How to edit service file
 
-`sudo nano /etc/systemd/system/go-zenon`
+`sudo nano /etc/systemd/system/go-zenon.service`
 
 ### go-zenon service commands
 
