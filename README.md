@@ -28,6 +28,20 @@ The first window you opened should now show logs of the startup process then blo
 
 ### To stop the logs at any time press control+c
 
+## Commands Worth Knowing
+
+Get all available commands
+
+`./znn-cli --help`
+
+Check wallet version
+
+`./znn-cli version`
+
+Check height & hash
+
+`./znn-cli frontierMomentum`
+
 ## Common errors:
 A note to start, if you set up a new user for security purposes and downloaded the bundle there be aware that znnd will use the "root" path so you may need to move files from your new user to root or change base path in the service file. An easier way is to install the node from root from the start.
 
