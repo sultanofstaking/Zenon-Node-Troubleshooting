@@ -12,6 +12,8 @@ OR
 
 `sudo journalctl -f -u go-zenon`
 
+To stop logs press ctrl+c. The lines above will show a truncated version of logs which is good as any errors most likely happened near the end of the logs. If you want to see full logs enter `sudo less /var/log/syslog`. To exit these logs press q
+
 You will either see logs of block production with no errors (that's good), block production with errors (these may be nothing or may need to be fixed - when in doubt ask the community), or your node may not be running. Assuming simply looking at the logs didn't give you enough info you can stop and start your node and watch the start up process for errors. To do this open another terminal window, log into your node, and run
 
 `./znn-controller`
