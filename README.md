@@ -107,4 +107,4 @@ Escape (END) = press q to get back to cli
 - Bandwidth with `iftop`
 - Network protocols with `ntopng`
 
-## If you found helpful no need to donate, but delegation to SultanOfStaking pillar would be appreciated 
+## If you found helpful no need to donate, but delegation to SultanOfStaking pillar would be appreciated!
