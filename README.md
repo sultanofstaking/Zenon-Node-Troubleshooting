@@ -1,6 +1,21 @@
-# Zenon Pillar Troubleshooting
+# Zenon Pillar Updates & Troubleshooting
 
-## I created this guide to help Zenon users diagnose and fix errors in their nodes. The tips below are my own and not endorsed by the Zenon team. Please use the issue feature for fixes here. If you need to reach me 1:1 DM me on TG @SultanOfStaking - Try at your own risk.
+## znnd v0.0.3 update
+
+You have until April 8th to update your pillars to znnd v0.0.3. Luckily the Zenon team has made this easy for all by integrating the update into a new znn conroller. All you have to do is download the new controller and deploy the update. Steps below.
+
+1. Log into your vps 
+2. Download the new update using the following command 
+```
+wget https://github.com/zenon-network/znn_controller_dart/releases/download/v0.0.3-alphanet/znn-controller-linux-amd64.zip && unzip -o znn-controller-linux-amd64.zip
+```
+3. Run `./znn-controller`
+4. Pick option 1) Deploy
+5. When asked about keeping current config select yes
+
+That's it! If you want to see what is going on you can have one screen up to enter the commands and one screen running logs (see troubleshooting tips below if you need help with that). Running deploy in the new controller stops your service, downloads v0.0.3, and restarts the service all in one command. Pretty slick! This should only take a few seconds so downtime shouldnt be too big of a concern. If you want to be extra safe look at my guide on updating with no downtime here. 
+
+## I created the guide below to help Zenon users diagnose and fix errors in their nodes. The tips below are my own and not endorsed by the Zenon team. Please use the issue feature for fixes here. If you need to reach me 1:1 DM me on TG @SultanOfStaking - Try at your own risk.
 
 ## How to diagnose errors in your node:
 
