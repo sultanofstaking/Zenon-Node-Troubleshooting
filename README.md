@@ -1,11 +1,13 @@
 # Zenon Pillar Updates & Troubleshooting
 
-## znnd v0.0.3 update
+## I created the guide below to help Zenon users udpate, diagnose, and fix errors in their nodes. The tips below are my own and not endorsed by the Zenon team. Please use the issue feature for fixes here. If you need to reach me 1:1 DM me on TG @SultanOfStaking - Try at your own risk.
 
-You have until April 8th to update your pillars to znnd v0.0.3. Luckily the Zenon team has made this easy for all by integrating the update into a new znn conroller. All you have to do is download the new controller and deploy the update. Steps below.
+## How to update your node / pillar
+
+Zenon has made updating your node easy for all by building the update process into the znn conroller. All you have to do is download controller v0.0.3 or later and deploy the update. Steps below.
 
 1. Log into your vps 
-2. Download the new controller using the following command 
+2. Download controller v0.0.3 if you dont already have it using the following command:
 ```
 wget https://github.com/zenon-network/znn_controller_dart/releases/download/v0.0.3-alphanet/znn-controller-linux-amd64.zip && unzip -o znn-controller-linux-amd64.zip
 ```
@@ -13,9 +15,7 @@ wget https://github.com/zenon-network/znn_controller_dart/releases/download/v0.0
 4. Pick option 1) Deploy
 5. When asked about keeping current config select yes
 
-That's it! If you want to see what is going on you can have one screen up to enter the commands and one screen running logs (see troubleshooting tips below if you need help with that). Running deploy in the new controller stops your service, downloads v0.0.3, and restarts the service all in one command. Pretty slick! This should only take a few seconds so downtime shouldnt be too big of a concern. If you want to be extra safe look at my guide on updating with no downtime here https://github.com/sultanofstaking/How-To-Update-Pillar-With-No-Downtime Good luck and if you need help dont hesitate to reach out on TG @SultanOfStaking - Dont forget to update your sentries too!
-
-## I created the guide below to help Zenon users diagnose and fix errors in their nodes. The tips below are my own and not endorsed by the Zenon team. Please use the issue feature for fixes here. If you need to reach me 1:1 DM me on TG @SultanOfStaking - Try at your own risk.
+That's it! If you want to see what is going on you can have one screen up to enter the commands and one screen running logs (see troubleshooting tips below if you need help with that). Running deploy in the new controller stops your service, downloads the latest znnd, and restarts the service all in one command. Pretty slick! This should only take a few seconds so downtime shouldnt be too big of a concern. If you want to be extra safe look at my guide on updating with no downtime here https://github.com/sultanofstaking/How-To-Update-Pillar-With-No-Downtime Good luck and if you need help dont hesitate to reach out on TG @SultanOfStaking - If you are a pillar operator dont forget to update your sentries too!
 
 ## How to diagnose errors in your node:
 
@@ -83,30 +83,5 @@ Move files
 `sudo mv yourfile ./yourpath/yourpath/yourfile` 
 
 This is helpful if you get errors indicating zenon cannot find data, wallet, etc. When you start your node logs should show you the paths being used for data and config. If your files on your machine are not in that path you need to move them. For example, if config path on startup is (making this up) root/znnd/config and your path is user1/znnd/config you would need to navigate to user1/znnd and run “sudo mv config ./root/znnd/config"
-
-### Basic Linux Commands: https://linuxcommand.org/lc3_man_pages/ssh1.html 
-Escape (END) = press q to get back to cli
-- Save = CTRL+O
-- Exit = CTRL+X
-- Remove = `rm`
-- Remove files in directory = `rm -r`
-- Remove directory = `rm -rf`
-- Terminate program = `ctrl+c`
-- View free memory = `free -m`
-- View memory usage = `ps aux`
-- View logs = 
-`cd /var/log`
-`ls`
-`sudo nano /var/log/log` replace log with what you want to view
-- Exit log = ctrl+c
-
-### System utilities to view performance
-- Memory usage with `vmstat` `top` `free` `htop`
-- CPU/memory/disk with `sar`
-- Bandwidth with `iftop`
-- Network protocols with `ntopng`
-
-### Memory issues
-To increase CPU you will need to upgrade your machine. To upgrade disk space you can add a volume then log into your machine and run `df -h` to identify the filesystem path then run `sudo resize2fs YOUR PATH` replacing YOUR PATH with the path displayed under filesystem in the previous step. 
 
 ## If you found helpful no need to donate, but delegation to SultanOfStaking pillar would be appreciated!
