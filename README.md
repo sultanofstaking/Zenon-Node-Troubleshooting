@@ -34,15 +34,25 @@ In the screen running logs you should see messages reflecting your node has stop
 If you get errors in the startup process you need to fix them. I have compiled a list of common errors below. Please submit an issue or message me if you encounter an error I need to add to the list.
 
 ## Common errors:
-A note to start, if you set up a new user for security purposes and downloaded the bundle there be aware that znnd will use the "root" path so you may need to move files from your new user to root or change base path in the service file. An easier way is to install the node from root from the start.
+
+- **Memory Leak Errors**: If you are noticing a memory leak on your pillar or node a simple restart every few days will solve the problem. You can automate this through a maxruntime in the service file or a cronjob to restart the node.
+  - Maxruntime: Stop znnd `sudo systemctl stop go-zenon.service`, access the service file `sudo nano /etc/systemd/system/go-zenon.service` and update with the following  (this replaces Restart=on-failure) 
+```
+Restart=always
+RuntimeMaxSec=86400
+```
+Then reload the daemon `sudo systemctl daemon-reload`, and start znnd `sudo systemctl start go-zenon.service` This will restart the service once per day.
+  - Cronjob: Start with `sudo crontab -e`, select nano as your editor, scroll to the bottom of the file and enter `00 12 * * * /sbin/shutdown -r now`. Your server will reboot every day at 12pm UTC. If you want to layer your pillar and sentries you can just adjust the time (12, 13, 14, 15)
+
+- **Unavailable resources (no disk space)**: To chase down what is taking up the space run `du -cha --max-depth=1 / | grep -E "M|G"` This will tell you what directory is taking up the space. From there you can drill down until you find the culprit. For example, if "root" is using all your memory run `du -cha --max-depth=1 /root | grep -E "M|G"` then if .zenon is the suspect `du -cha --max-depth=1 /root/.zenon | grep -E "M|G"` and so on. 
+
+- **Base Path Errors**: If you set up a new user for security purposes and downloaded the bundle there be aware that znnd will use the "root" path so you may need to move files from your new user to root or change base path in the service file. An easier way is to install the node from root from the start.
 
 - **My wallet is not detected**: Ensure yourn wallet is in the correct path "/root/.znn/wallet". In this example running `ls - lha` from "/root/.znn/wallet" should show your producer address. If not, check that same path in the user you created and downloaded the bundle with then move the wallet (move steps are further down). 
 
 - **Config file missing:** Ensure config is in correct path "/root/.znn/config.json". The contents of this file should mirror those on the [Zenon pillar deployment page](https://testnet.znn.space/#!deploy.md)
 
 - **Config malformed**: To troubleshoot this stop the znnd.service, disableRPC, then enableRPC. When you enableRPC you should get a readout telling you the line and character that is throwing the error in your config.json. Once you have that information edit the config file accordingly to fix the error. You will know the error is fixed when you can disableRPC and get "successful" return, then enableRPC and get "successful" return. For help with any of the commands mentioned refer to the [Zenon CLI Guide](https://testnet.znn.space/#!cli.md)
-
-- **Unavailable resources (no disk space)**: To chase down what is taking up the space run `du -cha --max-depth=1 / | grep -E "M|G"` This will tell you what directory is taking up the space. From there you can drill down until you find the culprit. For example, if "root" is using all your memory run `du -cha --max-depth=1 /root | grep -E "M|G"` then if .zenon is the suspect `du -cha --max-depth=1 /root/.zenon | grep -E "M|G"` and so on. 
 
 ### If you are getting errors not listed here please submit an issue and I will update this guide.
 
