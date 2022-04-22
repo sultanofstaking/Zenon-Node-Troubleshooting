@@ -36,13 +36,8 @@ If you get errors in the startup process you need to fix them. I have compiled a
 ## Common errors:
 
 - **Memory Leak Errors**: If you are noticing a memory leak on your pillar or node a simple restart every few days will solve the problem. You can automate this through a maxruntime in the service file or a cronjob to restart the node.
-  - Maxruntime: Stop znnd `sudo systemctl stop go-zenon.service`, access the service file `sudo nano /etc/systemd/system/go-zenon.service` and update with the following  (this replaces Restart=on-failure) 
-```
-Restart=always
-RuntimeMaxSec=86400
-```
-Then reload the daemon `sudo systemctl daemon-reload`, and start znnd `sudo systemctl start go-zenon.service` This will restart the service once per day.
-  - Cronjob: Start with `sudo crontab -e`, select nano as your editor, scroll to the bottom of the file and enter `00 12 * * * /sbin/shutdown -r now`. Your server will reboot every day at 12pm UTC. If you want to layer your pillar and sentries you can just adjust the time (12, 13, 14, 15)
+  - Maxruntime: Stop znnd `sudo systemctl stop go-zenon.service`, access the service file `sudo nano /etc/systemd/system/go-zenon.service`, update `Restart=on-failure` with `Restart=always` then add another line below it with `RuntimeMaxSec=86400` then reload the daemon `sudo systemctl daemon-reload`, and start znnd `sudo systemctl start go-zenon.service`. This will restart the service once per day. 
+   - Cronjob: Start with `sudo crontab -e`, select nano as your editor, scroll to the bottom of the file and enter `00 12 * * * /sbin/shutdown -r now`. Your server will reboot every day at 12pm UTC. If you want to layer your pillar and sentries you can just adjust the time (12, 13, 14, 15)
 
 - **Unavailable resources (no disk space)**: To chase down what is taking up the space run `du -cha --max-depth=1 / | grep -E "M|G"` This will tell you what directory is taking up the space. From there you can drill down until you find the culprit. For example, if "root" is using all your memory run `du -cha --max-depth=1 /root | grep -E "M|G"` then if .zenon is the suspect `du -cha --max-depth=1 /root/.zenon | grep -E "M|G"` and so on. 
 
