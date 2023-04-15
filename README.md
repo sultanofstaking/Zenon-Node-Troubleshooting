@@ -4,24 +4,24 @@
 
 ## How to update your node / pillar
 
-Zenon has made updating your node easy for all by building the update process into the znn conroller. All you have to do is download controller v0.0.3 or later and deploy the update. Steps below.
-
-1. Log into your vps 
-1.1 If you have sentrify activated run `ufw disable`
-
-2. Download & unzip controller 
-
-v0.0.4
+1. Log into your vps
+2. Confirm you are in the same path where zenon is downloaded
+3. If you have sentrify activated run `ufw disable`
+4. Download & unzip controller 
 ```
 wget https://github.com/zenon-network/znn_controller_dart/releases/download/v0.0.4-alpha/znn_controller-linux-x86_64.zip
-unzip znn_controller-linux-x86_64.zip
-
 ```
-3. When asked to replace controller enter `A` for All
-4. Run `./znn-controller` and confirm you are on v0.0.4
-5. Pick option 1) Deploy
-6. When asked about keeping current config select yes
-7. Run `./znn-controller` and select status to confirm znnd is v0.0.5
+```
+unzip znn_controller-linux-x86_64.zip
+```
+5. When asked to replace controller enter `A` for All
+6. Run `./znn-controller` and confirm you are on v0.0.4
+7. Pick option 1) Deploy
+8. When asked about keeping current config select yes `Y`
+9. Run `./znn-controller` and select status to confirm znnd is v0.0.5
+10. Activate UFW `UFW enable`
+
+It is highly recommended you have a seprate terminal up running logs during the update to watch for errors and check for block production. `sudo journalctl -f -u go-zenon`
 
 That's it! If you want to see what is going on you can have one screen up to enter the commands and one screen running logs (see troubleshooting tips below if you need help with that). Running deploy in the new controller stops your service, downloads the latest znnd, and restarts the service all in one command. Pretty slick! This should only take a few seconds so downtime shouldnt be too big of a concern. If you want to be extra safe look at my guide on updating with no downtime here https://github.com/sultanofstaking/How-To-Update-Pillar-With-No-Downtime Good luck and if you need help dont hesitate to reach out on TG @SultanOfStaking - If you are a pillar operator dont forget to update your sentries too!
 
