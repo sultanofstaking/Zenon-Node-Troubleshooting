@@ -7,13 +7,21 @@
 Zenon has made updating your node easy for all by building the update process into the znn conroller. All you have to do is download controller v0.0.3 or later and deploy the update. Steps below.
 
 1. Log into your vps 
-2. Download controller v0.0.3 if you dont already have it using the following command:
+1.1 If you have sentrify activated run `ufw disable`
+
+2. Download & unzip controller 
+
+v0.0.4
 ```
-wget https://github.com/zenon-network/znn_controller_dart/releases/download/v0.0.3-alphanet/znn-controller-linux-amd64.zip && unzip -o znn-controller-linux-amd64.zip
+wget https://github.com/zenon-network/znn_controller_dart/releases/download/v0.0.4-alpha/znn_controller-linux-x86_64.zip
+unzip znn_controller-linux-x86_64.zip
+
 ```
-3. Run `./znn-controller`
-4. Pick option 1) Deploy
-5. When asked about keeping current config select yes
+3. When asked to replace controller enter `A` for All
+4. Run `./znn-controller` and confirm you are on v0.0.4
+5. Pick option 1) Deploy
+6. When asked about keeping current config select yes
+7. Run `./znn-controller` and select status to confirm znnd is v0.0.5
 
 That's it! If you want to see what is going on you can have one screen up to enter the commands and one screen running logs (see troubleshooting tips below if you need help with that). Running deploy in the new controller stops your service, downloads the latest znnd, and restarts the service all in one command. Pretty slick! This should only take a few seconds so downtime shouldnt be too big of a concern. If you want to be extra safe look at my guide on updating with no downtime here https://github.com/sultanofstaking/How-To-Update-Pillar-With-No-Downtime Good luck and if you need help dont hesitate to reach out on TG @SultanOfStaking - If you are a pillar operator dont forget to update your sentries too!
 
